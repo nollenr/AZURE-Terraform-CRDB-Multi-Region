@@ -42,11 +42,12 @@ It is important to understand that 15 instances will be created when this script
 
 
 ## terraform.tfvars and vars.tf
-Be careful in choosing values for variables in the `teffaform.tfvars` and `vars.tf` files.  They must conform to Azure naming standards or values.  No checking is performed on the inputs.
+Be careful in choosing values for variables in the `teffaform.tfvars` and `vars.tf` files.  They must conform to Azure naming standards and be valid values for the types of objects being created.  No checking is performed on the inputs.
 
 # Appendix
 
 ## Making Sense of the TLS Certs Used in This HCL
+There are a lot of TLS objects (see [tls HCL file](tls.tf) ).  To help make sense of the objects and how they are used in CRDB and VM formation, I created this chart to help -- maybe it does, maybe it doesn't.  
 | Variable | CRDB  Name| TLS | TLS Name | Note |
 | ------   | ----      | --- | -------- | ---- |
 | tls_private_key | ca.key | tls_private_key.crdb_ca_keys.private_key_pem | TLS Private Key PEM| |
