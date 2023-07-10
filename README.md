@@ -21,9 +21,11 @@ cd AZURE-Terraform-CRDB-Multi-Region/
 # if you intend to use enterprise features of the database 
 export TF_VAR_cluster_organization={CLUSTER ORG}
 export TF_VAR_enterprise_license={LICENSE}
+```
+### Modify the terraform.tfvars to meet your needs
+You'll need to change several variable values to meet your needs.  For example, you may want different regions, Virtual Network CIDRs, etc.
 
-# Modify the terraform.tfvars to meet your needs
-
+```
 terraform init
 terraform plan
 terraform apply
