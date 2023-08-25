@@ -58,4 +58,7 @@ There are a lot of TLS objects (see [tls HCL file](tls.tf) ).  To help make sens
 |tls_locally_signed_cert |client.name.crt |tls_locally_signed_cert.user_cert.cert_pem | | Duplicate of tls_user_cert for better naming
 |tls_user_key|client.name.key|tls_private_key.client_keys.private_key_pem| | |
 
+## Replacing an instance from a module
 
+To replace the app instance from the first VPC (vpc 0)
+```terraform apply -replace=module.crdb-region-0.azurerm_linux_virtual_machine.app[0]```

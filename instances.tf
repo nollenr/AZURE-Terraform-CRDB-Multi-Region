@@ -13,6 +13,8 @@ module "crdb-region-0" {
   virtual_network_cidr         = var.virtual_network_cidr_blocks[0]
   virtual_network_location     = var.virtual_network_locations[0]
   crdb_vm_size                 = var.crdb_vm_size
+  crdb_disk_size               = var.crdb_disk_size
+  crdb_resize_homelv           = var.crdb_resize_homelv
   create_admin_user            = var.create_admin_user
   admin_user_name              = var.admin_user_name
   crdb_version                 = var.crdb_version
@@ -54,6 +56,8 @@ module "crdb-region-1" {
   azure_ssh_key_name           = var.azure_ssh_key_name               # same for all
   azure_ssh_key_resource_group = var.azure_ssh_key_resource_group     # same for all
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
+  crdb_disk_size               = var.crdb_disk_size                   # same for all
+  crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st
@@ -94,6 +98,8 @@ module "crdb-region-2" {
   azure_ssh_key_name           = var.azure_ssh_key_name               # same for all
   azure_ssh_key_resource_group = var.azure_ssh_key_resource_group     # same for all
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
+  crdb_disk_size               = var.crdb_disk_size                   # same for all
+  crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st

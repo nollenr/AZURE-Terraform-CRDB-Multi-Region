@@ -30,8 +30,12 @@ virtual_network_cidr_blocks = ["192.168.4.0/24", "192.168.5.0/24", "192.168.6.0/
 
 # ----------------------------------------
 # CRDB Instance Specifications
+# Names available here: https://azureprice.net/
+# For a 4 vCPU cluster "Standard_D4as_v5"
 # ----------------------------------------
 crdb_vm_size               = "Standard_B1ms"
+crdb_disk_size             = 128
+crdb_resize_homelv         = "yes"
 
 # ----------------------------------------
 # CRDB Admin User - Cert Connection
