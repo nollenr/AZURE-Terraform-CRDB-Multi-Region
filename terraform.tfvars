@@ -2,7 +2,7 @@
 # Globals
 # ----------------------------------------
 owner                      = "nollen"       #!
-resource_name              = "crdb-mr-demo" #! # This is NOT the resource group name, but is used to form the resource group name unless it is passed in as multi-region-resource-group-name
+resource_name              = "prometheus-test" #! # This is NOT the resource group name, but is used to form the resource group name unless it is passed in as multi-region-resource-group-name
 multi_region               = true           #!
 
 # ----------------------------------------
@@ -46,7 +46,7 @@ admin_user_name            = "ron"
 # ----------------------------------------
 # CRDB Specifications
 # ----------------------------------------
-crdb_version               = "23.1.5"
+crdb_version               = "23.1.14"
 
 # ----------------------------------------
 # Cluster Enterprise License Keys
@@ -67,6 +67,8 @@ haproxy_vm_size            = "Standard_B1ms"
 # ----------------------------------------
 include_app                = "yes"
 app_vm_size                = "Standard_B1ms"
+app_disk_size              = 128
+app_resize_homelv          = "yes"  # if the app_disk_size is greater than 64, then set this to "yes" so that the disk will be resized.  See warnings in vars.tf!
 
 # ----------------------------------------
 # Cluster Location Data - For console map
