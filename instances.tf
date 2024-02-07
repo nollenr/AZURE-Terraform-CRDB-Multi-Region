@@ -1,6 +1,6 @@
 module "crdb-region-0" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git?ref=prometheus"
 
   owner = var.owner
   resource_name                = "${var.resource_name}-zone0"
@@ -37,7 +37,7 @@ module "crdb-region-0" {
 
 module "crdb-region-1" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git?ref=prometheus"
 
   join_string                  = module.crdb-region-0.join_string     # from 1st module
   run_init                     = "no"                                 # no for all except the 1st
@@ -79,7 +79,7 @@ module "crdb-region-1" {
 
 module "crdb-region-2" {
   # use the https clone url from github, but without the "https://"
-  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git"
+  source = "github.com/nollenr/AZURE-Terraform-CRDB-Module.git?ref=prometheus"
 
   join_string                  = module.crdb-region-0.join_string     # from 1st module
   run_init                     = "no"                                 # no for all except the 1st
