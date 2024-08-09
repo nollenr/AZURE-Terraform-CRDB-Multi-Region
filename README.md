@@ -39,7 +39,8 @@ It is important to understand that 15 instances will be created when this script
 - 3 HA Proxy Nodes (1 HA Proxy per region)
 - 3 APP Nodes (1 APP node per region)
 
-
+# For ARM Installs
+- the version of CRDB must be 23.2.x and above
 
 ## terraform.tfvars and vars.tf
 Be careful in choosing values for variables in the `teffaform.tfvars` and `vars.tf` files.  They must conform to Azure naming standards and be valid values for the types of objects being created.  No checking is performed on the inputs.

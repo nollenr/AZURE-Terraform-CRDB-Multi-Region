@@ -31,11 +31,14 @@ virtual_network_cidr_blocks = ["192.168.4.0/24", "192.168.5.0/24", "192.168.6.0/
 # ----------------------------------------
 # CRDB Instance Specifications
 # Names available here: https://azureprice.net/
-# For a 4 vCPU cluster "Standard_D4as_v5"
+# For a 4 vCPU cluster "Standard_D4as_v5", for an ARM Install ""Standard_D2ps_v5" 
 # ----------------------------------------
 crdb_vm_size               = "Standard_B1ms"
 crdb_disk_size             = 128
 crdb_resize_homelv         = "yes"
+crdb_nodes                 = 3
+crdb_arm_release           = "no"
+
 
 # ----------------------------------------
 # CRDB Admin User - Cert Connection
@@ -74,3 +77,10 @@ app_resize_homelv          = "yes"  # if the app_disk_size is greater than 64, t
 # Cluster Location Data - For console map
 # ----------------------------------------
 install_system_location_data = "yes"
+
+# ----------------------------------------
+# UI Cert (so that the database console does not issue "Your connection is not private" warning)
+# ----------------------------------------
+include_uicert             = "no"
+uicert_domain_name         = ""
+uicert_email_address       = ""

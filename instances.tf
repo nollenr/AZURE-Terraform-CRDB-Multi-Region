@@ -15,6 +15,7 @@ module "crdb-region-0" {
   crdb_vm_size                 = var.crdb_vm_size
   crdb_disk_size               = var.crdb_disk_size
   crdb_resize_homelv           = var.crdb_resize_homelv
+  crdb_arm_release             = var.crdb_arm_release 
   create_admin_user            = var.create_admin_user
   admin_user_name              = var.admin_user_name
   crdb_version                 = var.crdb_version
@@ -33,6 +34,10 @@ module "crdb-region-0" {
 
   cluster_organization         = var.cluster_organization
   enterprise_license           = var.enterprise_license
+
+  include_uicert             = var.include_uicert
+  uicert_domain_name         = var.uicert_domain_name
+  uicert_email_address       = var.uicert_email_address
 }
 
 module "crdb-region-1" {
@@ -58,6 +63,7 @@ module "crdb-region-1" {
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
   crdb_disk_size               = var.crdb_disk_size                   # same for all
   crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
+  crdb_arm_release             = var.crdb_arm_release                 # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st
@@ -75,6 +81,10 @@ module "crdb-region-1" {
 
   cluster_organization         = var.cluster_organization             # not needed except for the 1st
   enterprise_license           = var.enterprise_license               # not needed except for the 1st
+
+  include_uicert             = var.include_uicert                     # can be the same, or only 1st node may have UICERT
+  uicert_domain_name         = var.uicert_domain_name                 # can be the same, or only 1st node may have UICERT
+  uicert_email_address       = var.uicert_email_address               # can be the same, or only 1st node may have UICERT
 }
 
 module "crdb-region-2" {
@@ -100,6 +110,7 @@ module "crdb-region-2" {
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
   crdb_disk_size               = var.crdb_disk_size                   # same for all
   crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
+  crdb_arm_release             = var.crdb_arm_release                 # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st
@@ -117,6 +128,10 @@ module "crdb-region-2" {
 
   cluster_organization         = var.cluster_organization             # not needed except for the 1st
   enterprise_license           = var.enterprise_license               # not needed except for the 1st
+
+  include_uicert             = var.include_uicert                     # can be the same, or only 1st node may have UICERT
+  uicert_domain_name         = var.uicert_domain_name                 # can be the same, or only 1st node may have UICERT
+  uicert_email_address       = var.uicert_email_address               # can be the same, or only 1st node may have UICERT
 }
 
 resource "azurerm_virtual_network_peering" "zone0-to-zone1" {
