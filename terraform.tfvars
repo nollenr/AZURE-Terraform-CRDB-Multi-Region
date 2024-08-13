@@ -38,6 +38,7 @@ crdb_disk_size             = 128
 crdb_resize_homelv         = "yes"
 crdb_nodes                 = 3
 crdb_arm_release           = "no"
+crdb_enable_spot_instances = "yes"
 
 
 # ----------------------------------------

@@ -16,6 +16,7 @@ module "crdb-region-0" {
   crdb_disk_size               = var.crdb_disk_size
   crdb_resize_homelv           = var.crdb_resize_homelv
   crdb_arm_release             = var.crdb_arm_release 
+  crdb_enable_spot_instances   = var.crdb_enable_spot_instances
   create_admin_user            = var.create_admin_user
   admin_user_name              = var.admin_user_name
   crdb_version                 = var.crdb_version
@@ -64,6 +65,7 @@ module "crdb-region-1" {
   crdb_disk_size               = var.crdb_disk_size                   # same for all
   crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
   crdb_arm_release             = var.crdb_arm_release                 # same for all
+  crdb_enable_spot_instances   = var.crdb_enable_spot_instances       # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st
@@ -111,6 +113,7 @@ module "crdb-region-2" {
   crdb_disk_size               = var.crdb_disk_size                   # same for all
   crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
   crdb_arm_release             = var.crdb_arm_release                 # same for all
+  crdb_enable_spot_instances   = var.crdb_enable_spot_instances       # same for all
   admin_user_name              = var.admin_user_name                  # not needed
   crdb_version                 = var.crdb_version                     # same for all
   install_enterprise_keys      = "no"                                 # no for all except the 1st
