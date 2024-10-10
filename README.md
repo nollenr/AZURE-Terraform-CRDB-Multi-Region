@@ -2,6 +2,8 @@
 
 ![Azure Resource Diagram](resources/azure-multi-regon.drawio.png)
 
+![Cockroach Deployment (Simple)](resources\azure-multi-regon-simple.drawio)
+
 # TLDR;
 Start by creating an SSH Key in Azure (region does not matter).  You'll supply the name of the key as a variable to the HCL (Hashicorp Configuration Language).   This key will allow you to log in to all the compute instances created by this script.
 
@@ -38,6 +40,9 @@ It is important to understand that 15 instances will be created when this script
 - 9 CRDB instances (3 nodes per region in 3 regions)
 - 3 HA Proxy Nodes (1 HA Proxy per region)
 - 3 APP Nodes (1 APP node per region)
+
+# UA Architecture (for PCR) Not Supported in MR
+Currently, UA Architecture (supported in single region) is not available in Multi-Region.
 
 # For ARM Installs
 - the version of CRDB must be 23.2.x and above

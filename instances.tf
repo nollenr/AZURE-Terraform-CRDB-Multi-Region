@@ -13,8 +13,7 @@ module "crdb-region-0" {
   virtual_network_cidr         = var.virtual_network_cidr_blocks[0]
   virtual_network_location     = var.virtual_network_locations[0]
   crdb_vm_size                 = var.crdb_vm_size
-  crdb_disk_size               = var.crdb_disk_size
-  crdb_resize_homelv           = var.crdb_resize_homelv
+  crdb_store_disk_size         = var.crdb_store_disk_size
   crdb_arm_release             = var.crdb_arm_release 
   crdb_enable_spot_instances   = var.crdb_enable_spot_instances
   create_admin_user            = var.create_admin_user
@@ -62,8 +61,7 @@ module "crdb-region-1" {
   azure_ssh_key_name           = var.azure_ssh_key_name               # same for all
   azure_ssh_key_resource_group = var.azure_ssh_key_resource_group     # same for all
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
-  crdb_disk_size               = var.crdb_disk_size                   # same for all
-  crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
+  crdb_store_disk_size         = var.crdb_store_disk_size             # same for all
   crdb_arm_release             = var.crdb_arm_release                 # same for all
   crdb_enable_spot_instances   = var.crdb_enable_spot_instances       # same for all
   admin_user_name              = var.admin_user_name                  # not needed
@@ -110,8 +108,7 @@ module "crdb-region-2" {
   azure_ssh_key_name           = var.azure_ssh_key_name               # same for all
   azure_ssh_key_resource_group = var.azure_ssh_key_resource_group     # same for all
   crdb_vm_size                 = var.crdb_vm_size                     # same for all
-  crdb_disk_size               = var.crdb_disk_size                   # same for all
-  crdb_resize_homelv           = var.crdb_resize_homelv               # same for all
+  crdb_store_disk_size         = var.crdb_store_disk_size             # same for all
   crdb_arm_release             = var.crdb_arm_release                 # same for all
   crdb_enable_spot_instances   = var.crdb_enable_spot_instances       # same for all
   admin_user_name              = var.admin_user_name                  # not needed

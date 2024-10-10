@@ -1,8 +1,8 @@
 # ----------------------------------------
 # Globals
 # ----------------------------------------
-owner                      = "nollen"       #!
-resource_name              = "prometheus-test" #! # This is NOT the resource group name, but is used to form the resource group name unless it is passed in as multi-region-resource-group-name
+owner                      = "nollen"       #! applied to resources as a tag
+resource_name              = "crdb-demo" #! # This is NOT the resource group name, but is used to form the resource group name unless it is passed in as multi-region-resource-group-name
 multi_region               = true           #!
 
 # ----------------------------------------
@@ -26,19 +26,19 @@ azure_ssh_key_resource_group = "nollen-resource-group"
 # Network
 # ----------------------------------------
 virtual_network_locations   = ["westus2", "centralus", "eastus2"]
-virtual_network_cidr_blocks = ["192.168.4.0/24", "192.168.5.0/24", "192.168.6.0/24"]
+virtual_network_cidr_blocks = ["192.168.5.0/24", "192.168.6.0/24", "192.168.7.0/24"]
 
 # ----------------------------------------
 # CRDB Instance Specifications
 # Names available here: https://azureprice.net/
 # For a 4 vCPU cluster "Standard_D4as_v5", for an ARM Install ""Standard_D2ps_v5" 
 # ----------------------------------------
-crdb_vm_size               = "Standard_B1ms"
-crdb_disk_size             = 128
-crdb_resize_homelv         = "yes"
+# crdb_vm_size               = "Standard_B1ms"
+crdb_vm_size               = "Standard_D4ps_v5"  # arm (Standard_D2ps_v5 and Standard_D4ps_v5 also allows spot pricing)
+crdb_store_disk_size        = 64
 crdb_nodes                 = 3
-crdb_arm_release           = "no"
-crdb_enable_spot_instances = "yes"
+crdb_arm_release           = "yes"
+crdb_enable_spot_instances = "no"
 
 
 # ----------------------------------------
@@ -50,7 +50,7 @@ admin_user_name            = "ron"
 # ----------------------------------------
 # CRDB Specifications
 # ----------------------------------------
-crdb_version               = "23.1.14"
+crdb_version               = "23.2.12"
 
 # ----------------------------------------
 # Cluster Enterprise License Keys

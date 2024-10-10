@@ -34,13 +34,6 @@
       type        = bool
       default     = true
     }
-    # TODO:  I think I need to delete this.  This is not needed here.  I'll create the resource group and pass the name to the module!  It will NEVER be a variable.
-    #        This is the resource group that's create in main.tf
-    variable "multi_region_resource_group_name" { #! Not in terraform.tfvars
-      description = "Name of the resource group"
-      type        = string
-      default     = "blah blah blah"
-    }
 
 # ----------------------------------------
 # Existing Key Info
@@ -93,12 +86,6 @@
       default     = ["192.168.4.0/24", "192.168.5.0/24", "192.168.6.0/24"]
     }
 
-    # TODO:  Delete this... it's not needed... that's why I have virtual_network_locationS
-    variable "virtual_network_location" { #! Not in terraform.tfvars
-      type    = string
-      default = "westeurope"
-    }
-
 # ----------------------------------------
 # CRDB Instance Specifications
 # Azure names available here: https://azureprice.net/
@@ -106,7 +93,7 @@
     variable "crdb_vm_size" {
       description = "The Azure instance type for the crdb instances."
       type        = string
-      default     = "m6i.large"
+      default     = "Standard_D4ps_v5" #arm
     }
     variable "crdb_nodes" { #! Not in terraform.tfvars (ok)
       description = "Number of crdb nodes PER REGION.  This should be a multiple of 3.  Each node is an Azure Instance"
@@ -117,31 +104,20 @@
         error_message = "The variable 'crdb_nodes' must be a multiple of 3"
       }
     }
-    variable "crdb_disk_size" {
-      description = "Size of the disk attached to the vm"
+    variable "crdb_store_disk_size" {
+      description = "Size of the data disk attached to the vm.  This is not the OS disk size, but the size of the disk available for CRDB data and logs"
       type        = number
       default     = 64
       validation {
-        condition = contains([64, 128, 256, 512], var.crdb_disk_size)
+        condition = contains([64, 128, 256, 512], var.crdb_store_disk_size)
         error_message = "CRDB Node disk size (in GB) must be 64, 128, 256 or 512"
       }
-    }
-    # Note that crdb_resize_homelv is dangerous.  Only use this option if you are use the redhat source image and only if you are sure
-    # that sda2 contains the lv "rootvg-homelv".   This procedure will add any unused space to homelv.
-    variable "crdb_resize_homelv" {
-      description = "When creating a larger disk than exists in the image you'll need to repartition the disk to use the remaining space."
-      type        = string
-      default     = "no"
-      validation {
-        condition = contains(["yes", "no"], var.crdb_resize_homelv)
-        error_message = "Valid value for variable 'crdb_resize_homelv' is : 'yes' or 'no'"        
-      }  
     }
 
     variable "crdb_arm_release" {
       description = "Do you want to use the ARM version of CRDB?  There are implications on the instances available for the installation.  You must choose the correct instance type or this will fail.  See https://learn.microsoft.com/en-us/azure/virtual-machines/dpsv5-dpdsv5-series"
       type        = string
-      default     = "no"
+      default     = "yes"
       validation {
         condition = contains(["yes", "no"], var.crdb_arm_release)
         error_message = "Valid value for variable 'arm' is : 'yes' or 'no'"        
@@ -177,16 +153,10 @@
 # ----------------------------------------
 # CRDB Specifications
 # ----------------------------------------
-    # TODO:  This can be removed from multi-region.  It will be created in single region.  Passed back to mulit-region and then handed off to the other regions.
-    variable "join_string" { #! Not in terraform.tfvars
-      description = "The CRDB join string to use at start-up.  Do not supply a value"
-      type        = string
-      default     = ""
-    }
     variable "crdb_version" {
       description = "CockroachDB Version"
       type        = string
-      default     = "22.2.10"
+      default     = "23.2.12"
     }
     variable "run_init" { #! not in terraform.tfvars, but I think I want to leave it in case, for whatever reason, I don't want to run the init.
       description = "'yes' or 'no' to run init on the database.  In a multi-region configuration, only run the init in one of the regions."
@@ -251,7 +221,7 @@
     variable "haproxy_vm_size" {
       description = "The Azure instance type for the crdb instances HA Proxy Instance"
       type        = string
-      default     = "t3a.small"
+      default     = "Standard_B1ms"
     }
 
 # ----------------------------------------
@@ -270,7 +240,7 @@
     variable "app_vm_size" {
       description = "The Azure instance type for the crdb instances app Instance"
       type        = string
-      default     = "t3a.micro"
+      default     = "Standard_B1ms"
     }
 
     variable "app_disk_size" {
