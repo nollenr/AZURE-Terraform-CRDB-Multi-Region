@@ -2,7 +2,7 @@
 
 ![Azure Resource Diagram](resources/azure-multi-regon.drawio.png)
 
-![Cockroach Deployment (Simple)](resources\azure-multi-regon-simple.drawio)
+![Cockroach Deployment (Simple)](resources/azure-multi-regon-simple.drawio.png)
 
 # TLDR;
 Start by creating an SSH Key in Azure (region does not matter).  You'll supply the name of the key as a variable to the HCL (Hashicorp Configuration Language).   This key will allow you to log in to all the compute instances created by this script.
@@ -68,3 +68,6 @@ There are a lot of TLS objects (see [tls HCL file](tls.tf) ).  To help make sens
 
 To replace the app instance from the first VPC (vpc 0)
 ```terraform apply -replace=module.crdb-region-0.azurerm_linux_virtual_machine.app[0]```
+
+
+[def]: resources/azure-multi-regon-simple.drawio
